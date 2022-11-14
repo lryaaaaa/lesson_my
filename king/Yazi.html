@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JS有强大的表现力
+        // const为JS中定义常量 关键字、保留字 声明常量
+        //let  var  变量   区别？     
+        // var 老版本（常量、变量）     现在es6 新版本
+        // let i;//套子
+        // if(true){    //判断
+        //     // 块级作用域
+        //     var num;//  let 不行（块级作用域） ； 需要  
+        //     num=10;
+        //     num++;
+        //     console.log(i);
+        // }
+        // console.log(num);//全局作用
+        const duck={
+            sing(){
+                 console.log('嘎嘎嘎');
+            }
+        }
+        // 接口
+        const chick={
+            sing(){
+                console.log('嘎嘎嘎');
+            }
+        }
+        const chior=[];//合唱团
+        for(i=0;i<999;i++){
+            chior.push(duck);//获取一千只
+        }
+        if(typeof chick.sing=='function'){
+         chior.push(chick);
+        }
+        if(chior.length>=1000){
+            console.log('合唱团招募成功');
+        }else{
+            console.log('继续招募')
+           
+        }
+        console.log(chior.length);
+
+        
+
+    </script>
+</body>
+</html>
