@@ -1,4 +1,4 @@
-<!--index.wxml-->
+ <!--index.wxml-->
 <!-- view相当于div -->
 <view class="container">
   <navigator url="/pages/deal/deal">
