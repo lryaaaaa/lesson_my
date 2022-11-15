@@ -1,0 +1,30 @@
+/* 复用的样式组件 */
+.weui-btn{
+     position: relative;/* 内部元素定位*/
+     display: block;/* 把行内a改为块级元素*/
+     width: 184px;
+     margin-left: auto;
+     margin-right: auto;
+     padding: 8px 24px;
+     font-weight: 700;
+     font-size: 17px;
+     text-align: center;
+     color: #fff;
+     line-height: 1.88234234;
+     border-radius: 8px;
+
+}
+.weui-btn_primary{
+      background-color: aqua;
+}
+.weui-btn_primary:active{
+ background-color:green;
+}
+.weui-btn_warn{
+    background-color: wheat;
+    color: red;
+}
+/* 兄弟选择器 */
+.weui-btn + .weui-btn{
+     margin-top: 10px;
+}
