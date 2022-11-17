@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星球大战-前端是代码界的导演</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            width: 100%;
+        }
+        body{
+            background:url(//cssanimation.rocks/demo/starwars/images/bg.jpg);
+        }
+        .starwars-demo{
+            width: 34em;
+            height: 17em;
+            /* 定位会 离他最近的position 不为static relative absolute的元素定位 */
+            /* 如果没有？找body */
+            position: absolute;
+            top: 53%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            /* background-color: green; */
+            /* 3D的世界 */
+            /* 允许盒子有纵深，可透视 */
+            perspective:800px;
+            /* transform支持3d */
+            transform-style: preserve-3d;
+
+        }
+        .star, .wars, .byline{
+            position: absolute;
+        }
+        .star{
+            top: -0.75em;
+        }
+        .wars{
+            bottom: -0.5em;
+        }
+        .byline{
+             color: #fff;
+             font-family: "ITC Serif Gothic",Lato;
+             font-size: 2.25em;
+             left: -2em;
+             right:-2em;
+                letter-spacing: 0.4em; 
+                text-align: center;    
+                text-transform: uppercase;
+                top: 39%;
+       }
+       .star{
+        animation: star 10s ease-out infinite;
+       }
+       .byline span{
+               animation: spin-letters 10s linear infinite;
+               display: inline-block;
+       }
+       @keyframes spin-letters{
+        0%,10%{
+            opacity: 0;
+            transform:rotateY(90deg);
+        }
+        30%{
+            opacity: 1;
+        }
+        70%,80%{
+            transform: rotateY(0);
+            opacity: 1;
+        }
+        95%,100%{
+            opacity: 0;
+        }
+       }
+       @keyframes star{
+           0%{
+            opacity: 0;
+            transform: scale(1.5)translateY(-0.75em);
+           }
+           20%{
+            opacity: 1;
+           
+           }
+           89%{
+            opacity: 1;
+            transform: scale(1);
+           }
+           100%{
+            opacity: 0;
+            transform: translateZ(-1000em);
+           }
+       }
+       .wars{
+        animation:wars 10s ease-out infinite;
+       }
+       @keyframes wars{
+        0%{
+            opacity: 0;
+            transform: scale(1.5) translateY(0.5em);
+        }
+        20%{
+            opacity: 1;
+        }
+        90%{
+            opacity: 1;
+            transform: scale(1);
+
+        }
+        100%{
+            opacity: 0;
+            transform:transformZ(-1000em);
+        }
+       }
+       .byline{
+        animation: move-byline 10s linear infinite;
+       }
+       @keyframes move-byline{
+        0%{
+            transform: translateZ(5em);
+        }
+        100%{
+            transform: translateZ(0);
+        }
+       }
+    </style>
+</head>
+<body>
+    <div class="starwars-demo">
+        <img src="//cssanimation.rocks/demo/starwars/images/star.svg
+        " alt="" class="star">
+        <img src="//cssanimation.rocks/demo/starwars/images/wars.svg" alt="" class="wars">
+        <h2 class="byline" id="byline">
+            <span>T</span><span>h</span><span>e</span>
+            <span></span>
+            <span>F</span><span>o</span><span>r</span><span>c</span><span>e</span>
+            <span></span>
+            <span>A</span><span>w</span><span>e</span><span>e</span><span>n</span>
+        </h2>
+    </div>
+</body>
+</html>
