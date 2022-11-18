@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./flexq1.css"> -->
+    <style>
+        /* css reset样式重置 */
+         *{
+            margin: 0;
+            padding: 0;
+        } 
+        .container{
+            width: 1024px;
+            margin: 0 auto;
+        }
+        .row{
+            height: 100vh;
+            background-color: green;
+            font-size: 0px;
+            margin: 10px 0;
+            /* 字符 为0 */
+        }
+        .col{
+            font-size: 16px;
+            /* 不会把兄弟挤下去
+            inline-block 可以设置宽高
+            bug 有间隙
+            */
+            display: inline-block;
+           width: 10%;
+           height: 100%;
+           background-color: red;
+           text-align: center;
+           line-height: 100vh;
+        }
+
+         .col2{
+            font-size: 16px;
+            /* 不会把兄弟挤下去
+            inline-block 可以设置宽高
+            bug 有间隙
+            */
+            display: inline-block; 
+           width: 10%;
+           height: 100%;
+           background-color: pink;
+           text-align: center;
+           line-height: 100vh;
+           /* display: flex;
+           justify-content: center;
+           align-items: center; */
+        } 
+        .col-7{
+            width: 70%;
+            background-color: black;
+
+        }
+        .col-3{
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <!-- <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul> -->
+    <div class="container">
+    <div class="row">
+        <div class="col col-7"></div>
+        <div class="col col-3"></div>
+        <!-- <div class="col1">1</div>
+        <div class="col2">2</div>
+        <div class="col1">3</div>
+        <div class="col2">4</div>
+        <div class="col1">5</div>
+        <div class="col2">6</div>
+        <div class="col1">7</div>
+        <div class="col2">8</div>
+        <div class="col1">9</div>
+        <div class="col2">10</div> -->
+    </div>
+</div>
+</body>
+</html>

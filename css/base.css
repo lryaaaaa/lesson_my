@@ -1,0 +1,19 @@
+*{
+  margin:0;
+  padding:0;
+}
+.wp{
+   width: 300px;
+   height: 300px;
+   /* css调试技巧 */
+   background-color: green; 
+   /* border: 1px solid red; */
+}
+.box{
+    background: pink;
+}
+.box.size{
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+}

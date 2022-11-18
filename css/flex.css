@@ -1,0 +1,10 @@
+.wp{
+    /* display: block; */
+    /* display: inline;
+    display: inline-block; */
+    display: flex;
+    /* 弹性布局 */
+    justify-content: center;
+    align-items: center;
+  
+}

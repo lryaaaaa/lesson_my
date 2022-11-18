@@ -1,0 +1,10 @@
+/* css 层叠样式 */
+.wp{
+    position: relative;
+}
+.box{
+    position: absolute;
+    /* calc()   */
+    top: calc(50%-50px);  
+    left: calc(50%-50px);
+}
