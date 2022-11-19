@@ -1,0 +1,25 @@
+/**index.wxss**/
+page{
+  position: relative;
+  /*相对单位 viewp width*/
+  width: 100vw;   
+  height: 100vh;/*相对单位 viewp height*/
+}
+.container{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) ;
+  height: 90%;
+  width: 80%;
+  border: 1px solid red;
+  margin: 0px auto;
+  overflow: hidden;
+  border-radius: 5px;
+  text-align:center;
+}
+.title{
+  color: red;
+  font-size: 20px;
+  
+}
