@@ -1,0 +1,13 @@
+/**app.wxss**/
+.container{
+  height: 100%;
+  padding: 0;
+
+}
+page{
+  width: 100%;
+  /* 水平超出隐藏 */
+  overflow-x: hidden;
+  background: #12203c;
+
+}
