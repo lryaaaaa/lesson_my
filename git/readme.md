@@ -1,0 +1,9 @@
+- git init
+- git add readme.md       多次添加暂存区
+- git commit -m'理由'     一次性提交
+- git log --oneline       提交记录
+- git reset --hard HEAD^  月光宝盒  回到上几次提交
+- git status              当前仓库状态
+- git pull origin master   拉下来
+- git push roigin master   提交到远程仓
+- git diff                 提交之前的修改对比
