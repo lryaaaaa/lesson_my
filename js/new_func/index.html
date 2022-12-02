@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 为什么var 声明name  会挂载在·window上 let不会
+        //代码的本质：文本字符串 给js的编译器chorme  v8引擎  
+        // 分词  var  name  =字符串数据类型
+        //定义一个变量的本质是在内存中声明一个地址
+        // 编译阶段  运行阶段  
+        //console.log(name);//不会报错，  undefined 变量提升
+        // VO{
+        //     global:,name
+        // }
+        // 变量查找  按作用域来查找
+    //    var name="windowName";//window  global scope
+    //    var y=4;
+    //    function a(){
+    //     //作用域链
+    //     // VO{function:,name，chain:global VO}
+    //     var x=2;
+    //     var name="Cherry";//不同的变量 作用域 function scope
+    //     console.log(name);
+    //     console.log(x,y)
+    //    }
+    //    a();// 一段代码  内存中？  进入执行栈
+// 'use strict'
+    var name="windowName";
+    var a={
+        name:'Cherry',
+        fn:function(){
+             console.log(this.name);
+        }
+    }
+    // function a(){
+    //     //this不会指向调用它的对象
+    //     var name="Cherry";
+    //     console.log(this.name);
+    //     // 无法确定this指向 this的值由调用方式决定
+
+    // }
+//  a.fn();//  函数一定会变量提升windows
+ //严格模式 报错
+ var f=a.fn();// 赋值  函数对象  f 为指针 指向函数对象  引用式赋值
+ f();// window.f()
+    
+    </script>
+</body>
+</html>
