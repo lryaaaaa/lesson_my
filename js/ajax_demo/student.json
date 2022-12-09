@@ -1,0 +1,22 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "叶总",
+      "hometown": "上饶",
+      "age": 18
+    },
+    {
+      "id": 2,
+      "name": "刘总",
+      "hometown": "赣州",
+      "age": 17
+    },
+    {
+      "name": "熊总",
+      "age": "22",
+      "hometown": "福州",
+      "id": 3
+    }
+  ]
+}
