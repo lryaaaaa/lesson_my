@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body><div class="container">
+    <table class="table">
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th> 
+            <th>家乡</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <form name="studentForm">
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">姓名</label>
+            <input type="text" name="name" class="form-control" id="nameInput  " placeholder="请输入姓名"
+            required>
+          </div>
+          <div class="mb-3">
+            <label for="ageInput" class="form-label">年龄</label>
+            <input type="number" name="age" class="form-control" id="ageInput"  placeholder="请输入年龄"
+            required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="hometownInput" class="form-label">家乡</label>
+            <input type="text " name="hometown" class="form-control" id="homedownInput"  placeholder="请输入家乡"
+            required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">提交</button>
+    </form></div>
+    <script>
+        //json  ForEach  DOM
+        //json 分离在student.json中   依赖Http服务
+        // 先student.json提供http服务 
+        // fetch  可以帮助我们发送一个http请求
+        const oTBody=document.querySelector('table tbody');
+        fetch('http://localhost:3000/students')
+        .then(data=>data.json())
+        .then(data =>{
+            // console.log(data);
+            data.forEach(item=>{
+              oTBody.innerHTML+=`
+              <tr>
+                <td>${item.name}</td>
+                <td>${item.age}</td>
+                <td>${item.hometown}</td>
+            
+                </tr>`
+            })
+        })
+        const oForm=document.forms["studentForm"];
+        oForm.addEventListener('submit',function(event){
+            //箭头函数此处this指向window
+           event.preventDefault();//阻止默认行为
+            const student={
+                name:this["name"].value,
+                age:this["age"].value,
+                hometown:this["hometown"].value
+            }
+            // console.log(student);
+            fetch('http://localhost:3000/students',{
+                method:'POST',//表示添加一个
+                body:JSON.stringify(student),
+                headers:{
+                    'Content-Type':'application/json'
+                }               
+            })
+            .then(data=>data.json())
+            .then(data=>{
+                console.log(data);
+            })
+        })
+    </script>
+</body>
+</html>
