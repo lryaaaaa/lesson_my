@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <label for="">没有防抖的input</label>
+        <input type="text" id="unDebounce" placeholder="请输入关键字">
+    </div>
+    <script>
+    //    百度搜索  的用户体验      search suggest
+    //  全局作用域   js 当前单线程的global window
+
+    let inputa=document.getElementById('unDebounce');//类型 object   js 一切复杂类型都是对象
+    // HTMLInputElement CSSStyleDeclaration
+    // inputa.value='世龙'
+    // console.log(Object.prototype.toString.call(inputa));
+    // console.log(Object.prototype.toString.call(inputa.style));
+    inputa.addEventListener('keyup',function(e){
+        // Object.prototype.toString.call(e);
+    //    console.log(e.key,e.keyCode);
+
+    //模块化，得到用户的输入
+    // 非常频繁的事件
+    // ajax为高阶函数，  回调函数 解决一个
+    ajax(e.target.value,(res)=>{//异步思想
+  // 传一值会undefined，此时输出res，     用了回调函数res
+    });//JS主动拉取数据的  feath   会报错  
+    
+
+      
+    })
+    function ajax(keyword,cb){
+     //负责去请求   通过HTTP协议再去后端拉取数据
+     // 数据格式为json  ，最早为xml
+      const xhr=new XMLHttpRequest(); //jser 实现前后端分离，前端去拉取数据的核心对象
+      // GET  HTTP method
+      // url 接口地址
+      // 数据格式为json 
+      //打开请求的通道
+      //状态码 0
+      xhr.open("GET","https://www.fastmock.site/mock/995214af813bc47208cf2fcb558907e6/mall/home/multidata");
+      //1
+    xhr.send();//请求才真正的发送出去  1
+    xhr.onreadystatechange=function(){
+        //2 ,方法已经获得，头部和状态   发送响应头  回发一个状态码（200）表示我可以成功响应
+        //3, 属性已经包含数据
+        // 4. 数据已经完全到达
+        // console.log(xhr.readyState,'........');
+        if(xhr.readyState==4){
+            // cb是一个回调函数   callback
+            cb(JSON.parse(xhr.responseText));//数据json化
+        }
+    }
+    }
+    </script>
+</body>
+</html>
