@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            /* display: table; */
+            /* float: left; */
+            /* position: absolute; */
+            /* position: fixed; */
+            /* display: flex; */
+            /* overflow: hidden;flex  开启新的bfc 的能力 */
+            /* display: inline-block;元素大小撑开盒子 */
+            background: #000;
+            /* height: 300px; */
+        }
+        .box{
+            margin: 100px;
+            width: 100px;
+            height: 100px;
+            background: red;
+            float: left;
+            /* 浮动 */
+        }
+    </style>
+</head>
+<body>
+    <!-- body是最大的bfc元素 -->
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
