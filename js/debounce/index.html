@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数防抖-前端性能优化</title>
+</head>
+<body>
+    <div>
+        <label for="unDebounce">没有防抖的input </label>>
+        <input id="unDebounce" type="text">
+    </div>
+    <div>
+        <label for="debounce">防抖后的input</label>  
+        <input id="debounce"type="text">
+    </div>
+    <script>
+        //优化一下， search suggest
+        // 既能猜出用户要输入什么，同时减少一下请求次数
+        function ajax(content){
+            //前端开销  fetch ajax xhr  没有必要
+            //后端开销   接受请求，计算，返回  宕机
+                console.log('ajax request'+content);//开销很大
+        }
+        //防抖功能函数
+        function debounce(func,delay){
+            //闭包
+            //自由变量？可以被其他函数调用的变量
+            //减少fun执行次数，delay时间
+            return function(...args){//e.target.value
+                let that=this;//缓存this  window
+                // let _args=args;
+                clearTimeout(func.id)
+                //定时器，唯一编号
+                func.id=setTimeout(function(){
+                func.call(that,args)
+                },delay)
+
+            }
+        }
+        let inputa=document.getElementById('unDebounce');
+        let inputb=document.getElementById('deounce');
+        inputa.addEventListener('keyup',function(e){
+            // console.log(e.target.value,this.value);//一样的
+           ajax(e.target.value)//请求处理
+        })
+        //通用的防抖函数
+        let debounceAjax=debounce(ajax,500);
+        inputb.addEventListener('keyup',function(e){
+            //开源节流，防抖操作
+            debounceAjax(e.target.value)
+        })
+    </script>
+</body>
+</html>
