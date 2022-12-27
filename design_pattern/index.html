@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单例模式</title>
+</head>
+<body>
+    <script>
+        //一个类只能实例化一次  登录弹窗
+        //封装成一个类  html css js 切换显示和隐藏（组件思想）
+        //第一次触发登录鉴权，实例化一下，   再次触发鉴权，不用实例化，调用show方法
+        class SingleDog{
+            show(){
+                console.log('我是一个单例对象')
+            }
+            //静态方法
+            static getInstance(){
+             if(!SingleDog.instance){
+              SingleDog.instance=new SingleDog();
+             }
+             return SingleDog.instance
+            }
+        }
+        //要求只能实例化一次，所以不能new
+        SingleDog.getInstance();//静态方法，在类上调用，不可用实例调用
+        SingleDog.getInstance();
+        console.log(SingleDog.getInstance() === SingleDog.getInstance())
+    </script>
+</body>
+</html>
