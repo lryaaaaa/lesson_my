@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //    setTimeout(()=>{
+    //     console.log('aaa')
+    //    },0)
+    //    console.log('111')
+       //结果为111，aaa
+
+
+
+       //回调函数 解决异步问题
+    //    function func(cb){
+    //     setTimeout(()=>{
+    //     console.log('aaa')
+    //   },0);
+    //    cb();
+    //    }
+    //    function cb(){
+    //     console.log('111')
+    //    }
+    //    func(cb);
+
+
+
+       //resolve 解决了   reject失败了
+       const p=new Promise((resolve,reject)=>{
+            //封装一个耗时任务
+            setTimeout(()=>{
+        //   resolve('1111')
+        reject('不好意思');//拒绝
+        console.log(p)
+            },1000)
+       })//promise 表示当前待定的事件  pending 状态
+       p.then((data)=>{//表示P成功之后再执行 data表示resolve传值
+        console.log(data)
+       }).catch(e=>{//reject 走这 e 表示reject的值
+        console.log(e,'失败了')
+       })
+    </script>
+</body>
+</html>
