@@ -16,8 +16,8 @@ var maximalSquare = function(matrix) {
         max=1;
     }
    }
-   for(let i=0;i<n;i++){
-    for(let j=o;j<m;j++){
+   for(let i=1;i<n;i++){
+    for(let j=1;j<m;j++){
         if(matrix[i][j]==='1'){
         dp[i][j]=Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1;
         max=Math.max(dp[i][j],max);
