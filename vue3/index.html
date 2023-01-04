@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .msg{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 组件化思想 VS DOM思想 -->
+    <div id="app">
+        <!--   根节点 挂载 组件
+        内部使用组件化思想
+        内部使用数据驱动
+        内部支持v-for v-if
+        DOM 原始不支持的，vue来支持 -->
+        
+    </div>
+    <script>
+        //App开发思想  Vue  对象
+        //Vue 原生JS 对象
+        //命名空间  功能汇集一点
+        // class Vue{
+
+        // }
+        // 1. 创建一个web app  Vue.createApp({})
+        // 2. 挂载在#app 上
+        //  第一个根组件的开发。方便组件化思想的落地
+        Vue.createApp({
+            //组件=标签+css+js  template相当于wxml
+            template:'<div class="msg">Hellow World!{{counter}}</div>',//模板 不做DOM编程
+            //js
+            data(){
+                return {
+                    // 数据驱动的思想
+                    counter:1
+                }
+            },
+            //加载完成时自动触发，生命周期函数
+            // onLoad(){
+
+            // }
+            mounted(){
+                console.log('页面加载完成后自动执行')
+                setInterval(()=>{
+                    // this.setData();//小程序抄的react
+                    this.counter+=1//实现每秒加一
+                    //this指向  data
+                    // this.$data.counter+=1;这个也行
+
+                },1000)
+            }
+
+        }).mount('#app')//挂载点上
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大佬列表</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+    const app=Vue.createApp({
+        template:`
+        <div>
+            <!-
+            v- 为指令 directiver
+            :value=""  更简洁
+            v-bing:value=""双引号里为js区域
+            <input :value="inputValue" @input="doInput" >
+            <input  v-model="inputValue">
+            
+           <button @click="handleAddItem">增加大佬</button>
+            <div v-if="!list.length">
+                目前还没有数据，加载中...</div>
+                <my-title/>
+             <div>{{inputValue}}</div>
+            <ul v-if="list.length">
+               
+            
+            <my-dalao v-for="(item,index) of list"
+            :item="item"
+            v-bind:index="index"/></ul>
+            </div>
+        `,
+        data(){
+            return {//数据驱动，界面自动更新
+                isFocus:true,
+                list:[],//开始为空
+                inputValue:''//表单
+            }
+        },
+        methods:{//绑定事件 v-on 之类的
+            doInput(e){
+                // console.log(e)
+                this.inputValue=e.target.value;
+            },
+            handleAddItem(){
+                if(this.inputValue){
+                this.list.push(this.inputValue);
+                this.inputValue='';
+}
+            }
+
+        },
+        mounted(){//动态请求数据等拖慢界面加载的一些动作
+            // setTimeout(() => {
+            //     this.inputValue='胡总'
+            // }, 1000);
+            setTimeout(() => {
+                this.list=[
+                    '王总','龙总','刘总'
+                ]
+            }, 2000);
+        }
+
+     })
+    //组件化思想
+    //自定义的组件名，代表某个html+css+js的集合
+     app.component('my-title',{
+        template:'<h1 style="text-align:center;">旅梦大佬集合</h1>'
+     })
+     app.component('my-dalao',{
+        props:['item','index'],//简化版
+        template:`
+        【{{index}}】--【{{item}}】
+        `
+
+     })
+    const vm=app.mount('#app')
+    //vue为现代前端MVVM设计模式开发框架
+    //view 视图层模板 v
+    //模型层 model   m
+    //结合并且生成html str 叫vm ，把数据和模板自动关联起来
+    console.log(vm,'1111')//Proxy 代理
+    </script>
+</body>
+</html>

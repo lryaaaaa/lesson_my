@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+       const app=Vue.createApp({//字符串模板es6最新``可以换行
+        //组件化搭建页面
+            template:`
+            <div>Hellow World!
+                <!-
+                html注释
+           // bindtap v-on:click  v-on事件指令dom0 dom2 addEventListener
+           //vue 的指令 directive
+           //  v-on 
+            // v- 指令的开始
+            //  wx-for
+            //  wx-if
+            //  wx-else
+            //  v-on 事件监听指令
+            //  :click什么事件
+            ->
+            <div v-if="isShowMeal">{{counter}}</div>
+            <button @click="welcomeBtnClick">欢迎光临</button>&nbsp
+            <button v-on:click="welgobaiBtnClick">谢谢惠顾</button>
+            <div>
+                <div v-if="isShowMeal">{{setMeal}}</div>
+                <button @click="showOrHideBtnClick">显示或隐藏</button>
+                </div>
+            </div>
+            `,
+            methods:{
+                showOrHideBtnClick(){
+                    this.isShowMeal=!this.isShowMeal
+                    
+                },
+                welcomeBtnClick(){
+                    console.log('···')
+                    this.counter++;
+
+            },
+               welgobaiBtnClick(){
+                console.log('////')
+                this.counter--;
+               }
+            },
+            
+            data(){
+                //为什么返回的是对象
+                //data 里面用{}组织了组件要用到的数据
+                //data里的对象可以被监听
+                return {
+                    counter:'1',
+                    isShowMeal:false,
+                    setMeal:'1套餐 2套餐 3套餐'
+                    // a:'1'
+                }
+
+            },
+            mounted(){
+                // setInterval(()=>{
+                //     this.counter++;//修改数据了
+
+                // },1000)
+            }
+
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
