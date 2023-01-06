@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端MVVM设计模式</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <!-- 后端设计 MVC -->
+    <!-- M Model  data() return {}
+    V View  template:''
+    VM  数据与视图结合的过程，挂载在页面 ViewModel -->
+
+     <div id="app">
+
+     </div>
+    <script>
+    const app=Vue.createApp({
+        //私有数据
+        data(){//在这里定义了数据，model数据
+            return {
+            title:'惊涛伟略',
+            msg:'于朝军同学的快手sp Ofeer下来了',
+            counter:1,
+            showTitle:true
+            }
+        },
+        //定义了模板 view
+        template:`
+        <div>
+            <h1>{{msg}},点赞{{counter}}</h1>
+            <button v-on:click="doStart">点赞+1</button>
+            <button v-on:click="upStart">点赞取消</button>
+            <my-title :title="title" v-if="showTitle"/>
+            <my-title :title="title" v-show="showTitle"/>
+            <button @click="toggleTitle">切换标题组件</button>
+            </div>
+        `,//VM 数据与模板自动关联，由Vue来完成
+        
+       beforeCreate(){//创建之前
+        //初始化事件和生命周期注册
+        console.log('beforeCreate,组件实例创建之前，')
+
+       },
+       created(){//组件实例被创建
+        //{{}}响应式
+        console.log('created，已经创建完成，在内存')
+ 
+       },//模板的编译
+        beforeMount(){//vm
+            // 此时的template已经变成dom 可以接受的string
+        console.log('挂载前，beforeMount')
+        },
+        //页面加载完毕之后，数据的改动引起页面的变化
+        // innerHTML+=``   appendChild
+        mounted(){//生命周期 钩子函数  自动执行
+            //是真实的dom
+            console.log('挂载完成')
+            setTimeout(() => {
+                this.title='新标题'
+            }, 2000);
+
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate')
+            console.log(document.getElementById('app').innerHTML)
+
+        },
+        updated(){
+            console.log('已完成更新')
+            console.log(document.getElementById('app').innerHTML)
+        },
+        beforeUnmount(){
+            console.log('beforeUnmount')
+            console.log(document.getElementById('app').innerHTML)
+
+        },
+        unmounted(){
+            console.log('已经卸载掉了')
+            console.log(document.getElementById('app').innerHTML)
+
+        },
+        methods:{//事件触发函数的定义区域  数据的更新 构造函数
+            doStart(){
+                this.counter++
+            },
+            upStart(){
+                this.counter--
+            
+
+        },
+        toggleTitle(){
+            this.showTitle=!this.showTitle
+        }
+       }
+    })
+    app.component('my-title',{//同理，子组件先挂载完成，根组件再完成挂载
+        props:['title'],
+        template:`<h1>{{title}}</h1>`,
+        created(){//根组件挂载完成之前，开始挂载之后
+            console.log('my-title组件创建了')
+
+        },
+        beforeUpdate(){
+            console.log('my-title开是更新')
+
+        },
+        updated(){
+            console.log('my-title更新了')
+        },
+        unmounted(){
+            console.log('my-title卸载了')
+        }
+
+    })
+    const vm= app.mount('#app');//根组件
+    </script>
+</body>
+</html>
