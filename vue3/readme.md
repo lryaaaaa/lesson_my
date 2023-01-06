@@ -46,6 +46,35 @@
     - v-on:input 绑定事件      简写为@input
     - 单向数据绑定？v-bind:value  v-on:input  出现在表单元素
     - 双向数据绑定  v-model   =v-bind:value + v-on:input(vue 特色，更友好)
-     
+
+     <my-title :title="title" v-if="showTitle"/> if为false ，组件直接卸载
+    <my-title :title="title" v-show="showTitle"/>show为false，组件任然挂载，只是隐藏了
+
+- 生命周期  MVVM
+   Model  View 
+   - create  创建阶段，在内存之中
+      创建之前，会先监听事件和生命周期钩子函数 beforeCreate
+      数据的绑定和响应式 get set defineProperty  created
+   - mount  从内存中去到真实的DOM上，
+       template编译成DOM能够挂载的string beforeMount
+       dom string 交给了这个App要挂载的节点，vm  mounted
+   - update(组件不是静态，事件和数据请求counter)
+      this.$data.counter    beforeUpdate
+      new dom string   dom 上显示新的数据即完成数据更新  update
+   - unmount
+       命令组件卸载 之前 有个beforeUnmount
+       unmounted  已经卸载，执行DOM removeChild
+
+
+- Vue中，数据模型除了data 还有props
+   data 为私有数据
+   props 外界传参数据
+   computed 计算属性
+
+
+- 父子组件间的生命周期
+     子组件会在父组件开始挂载在页面上时开始创建，
+     父组件在所有子组件挂载完毕之后才会挂载完毕，
+     父组件改变子组件绑定的数据也会使子组件完成数据的更新阶段
  
 
