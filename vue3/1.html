@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let o={};//堆内存
+        let bValue=23;
+        Object.defineProperty(o,'b',{
+             get(){
+                console.log();//当你读取某个属性，我可以做其他事
+                return bValue;//可以监听
+             },
+             set(newValue){//改
+                bValue=newValue
+             }
+        })
+        //访问了对象的属性，读操作
+    console.log(o.b);
+    o.b=24;
+    console.log(o.b);
+    </script>
+</body>
+</html>

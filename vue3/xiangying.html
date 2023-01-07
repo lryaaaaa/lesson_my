@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式</title>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+</head>
+<body>
+    <script>
+// 1. vue 数据格式是对象，key value 来组织，keys
+// 2. 每个key 值 template里占位，数据驱动
+// 3. 当数据发生改变后，template会响应，自动更新
+//数据格式，对象，json数组
+   const obj={
+    a:1
+   };//数据可以被监听  
+//    obj.defineProperty();//es5提供的api  定义一个属性
+   //第一个属性，Vue2.0 react 早期版本源码，响应式api 节省很多的DOM
+   // defineProperty Object上的静态属性
+   // defineProperty可以定义对象上一个属性所以一般用defineProperties,多个属性
+   Object.defineProperty(obj,'counter',{//传参为 对象，属性名，属性值
+     value:42,//默认为可写
+     enumerable:true , //设置属性可遍历
+    //  writable:false  //设置属性为只读
+    writable:true
+   })
+   Object.defineProperty(obj,'msg',{
+    //权限  可写 不可遍历
+   value:'大佬',
+   writable:true,
+   enumerable:false
+   })
+   Object.freeze(obj);//冻结对象，不可更改
+   obj.a=2;
+   console.log(obj.a)//1
+    Object.keys(obj);//将对象的props输出成数组
+   for(let key in obj){
+    console.log(key,obj[key])
+   }
+   //key symbol 绝不会被覆盖
+   obj[Symbol()]='123';
+   console.log(Object.getOwnPropertyNames(obj))
+   console.log(Object.getOwnPropertySymbols(obj))
+    </script>
+</body>
+</html>
