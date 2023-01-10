@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA</title>
+</head>
+<body>
+    <nav id="nav">
+        <a href="#/page1">page1</a>
+        <a href="#/page2">page2</a>
+        <a href="#/page3">page3</a>
+        <a href="?a=1">search</a>
+        <a href="https://baidu.com">百度</a>
+    </nav>
+    <div id="container">
+
+    </div>
+    <script>
+        //url要更新 完整目录前，会重新加载
+        //url的hash部分更改，不会重刷页面，
+        window.addEventListener('hashchange',function(){
+            // console.log(location.hash.replace('#',''))
+            let hash=location.hash.slice(1);//第二个字符串要
+            
+        })
+    </script>
+</body>
+</html>
