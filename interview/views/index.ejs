@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="post" name="loginForm">
+        <input type="text" name="name">
+        <input type="password" name="pwd">
+        <input type="submit" value="登录">
+
+    </form>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const form=document.forms['loginForm'];
+        //阻止表单默认行为
+        form.addEventListener('submit',function(event){
+            event.preventDefault();
+            const name=form['name'].value;
+            const pwd=form['pwd'].value;
+            axios.post('/login',{
+                name,
+                pwd
+            })
+            .then(res=>{
+                // console.log(res)
+                const token=res.data.token;
+                console.log(token,'///');
+                localStorage.setItem('token',token);
+            })
+        })
+    </script>
+</body>
+</html>
